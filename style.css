@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    font-family: VT323, sans-serif;
+    color: white;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.calculator {
+    width: 340px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #EA7A58;
+    border-radius: 20px;
+}
+
+.screen {
+    background-color: #FFFFFF;
+    width: 286px;
+    height: 80px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.screen-result {
+    color: #343438;
+    font-size: 36px;
+    margin: 6px 12px;
+}
+
+.keypad {
+    width: 276px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.calculator-key {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    font-size: 28px;
+    box-shadow: 4px 4px 16px rgba(0,0,0,.15);
+    cursor: pointer;
+}
+
+.calculator-key:hover {
+    transition: transform 0.12s ease-in-out;
+    transform: scale(1.05);
+}
+
+.operator,
+.equals {
+    background-color: #E4DCCB;
+    color: rgb(48, 48, 48);
+}
+
+.operator:hover,
+.equals:hover {
+    background-color: #dad2c1;
+}
+
+.numeric {
+    background-color: #4B4C52;
+    color: white;
+}
+
+.numeric:hover {
+    background-color: #343438;
+}
+
+.equals {
+    width: 132px;
+}
