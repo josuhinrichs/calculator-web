@@ -47,6 +47,8 @@ function executeOperation() {
     const operations = equation.operation;
     const numbers = equation.number;
 
+
+    
     while(operations.length != 0){
         for(let i=0; i<operations.length; i++){
             console.log(numbers);
@@ -96,6 +98,11 @@ function executeOperation() {
 
 numericButtons.forEach( item => {
     item.addEventListener('click', e => {
+        if(e.target.dataset.key == '.') {
+            if(displayValue.textContent.includes('.') == true) {
+                return;
+            }
+        }
         displayValue.textContent = displayValue.textContent + e.target.dataset.key;
         //console.log(e.target);
     });
@@ -104,7 +111,9 @@ numericButtons.forEach( item => {
 operationButtons.forEach( item => {
     item.addEventListener('click', e =>{
         equation.number.push( +displayValue.textContent );
-        if(e.target.dataset.key != '=') { equation.operation.push( e.target.dataset.key ); }
+        if(e.target.dataset.key != '=') { 
+            equation.operation.push( e.target.dataset.key );
+        }
         displayValue.textContent = 0;
         //console.log(equation.number);
         console.log(equation.operation);
