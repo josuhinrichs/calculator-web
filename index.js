@@ -1,6 +1,8 @@
 const numericButtons = document.querySelectorAll('.numeric');
 const operationButtons = document.querySelectorAll('.operator');
 const equalsButton = document.querySelector('.equals');
+const clearButton = document.querySelector('#clear');
+const deleteButton = document.querySelector('#delete');
 
 let displayValue = document.querySelector('.screen-result');
 const equation = {
@@ -21,7 +23,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    return a/b;
 }
 
 function percent(a, b) {
@@ -36,7 +38,7 @@ function operate(operator, a, b) {
             return subtract(a,b);
         case 'multiply':
             return multiply(a,b);
-        case divide:
+        case 'divide':
             return divide(a,b);
         default:
             return percent(a,b);
@@ -46,16 +48,12 @@ function operate(operator, a, b) {
 function executeOperation() {
     const operations = equation.operation;
     const numbers = equation.number;
-
-
-    
     while(operations.length != 0){
         for(let i=0; i<operations.length; i++){
             console.log(numbers);
             if(operations.includes('%') == true){
                 if(operations[i] == '%'){
                     numbers[i] = operate('percent', numbers[i], numbers[i+1]);
-                    console.log(numbers[i]);
                     operations.splice(i,1);
                     numbers.splice(i+1,1);
                 } else continue;
@@ -63,7 +61,6 @@ function executeOperation() {
             if(operations.includes('/') == true){
                 if(operations[i] == '/'){
                     numbers[i] = operate('divide', numbers[i], numbers[i+1]);
-                    console.log(numbers[i]);
                     operations.splice(i,1);
                     numbers.splice(i+1,1);
                 } else continue;
@@ -71,7 +68,6 @@ function executeOperation() {
             if(operations.includes('*') == true){
                 if(operations[i] == '*'){
                     numbers[i] = operate('multiply', numbers[i], numbers[i+1]);
-                    console.log(numbers[i]);
                     operations.splice(i,1);
                     numbers.splice(i+1,1);
                 } else continue;
@@ -79,21 +75,21 @@ function executeOperation() {
             if(operations.includes('-') == true){
                 if(operations[i] == '-'){
                     numbers[i] = operate('subtract', numbers[i], numbers[i+1]);
-                    console.log(numbers[i]);
                     operations.splice(i,1);
                     numbers.splice(i+1,1);
                 } else continue;
             }
             if(operations[i] == '+'){
                 numbers[i] = operate('add', numbers[i], numbers[i+1]);
-                console.log(numbers[i]);
                 operations.splice(i,1);
                 numbers.splice(i+1,1);
             }
             
         }
     }
+    numbers[0] = Math.round(numbers[0] * 10000) / 10000;
     displayValue.textContent = numbers[0];
+    equation.number = [];
 }
 
 numericButtons.forEach( item => {
@@ -103,8 +99,11 @@ numericButtons.forEach( item => {
                 return;
             }
         }
-        displayValue.textContent = displayValue.textContent + e.target.dataset.key;
-        //console.log(e.target);
+
+        if(displayValue.textContent === '0'){
+            displayValue.textContent = e.target.dataset.key;;
+        } else { displayValue.textContent = displayValue.textContent + e.target.dataset.key; }
+        
     });
 });
 
@@ -115,10 +114,25 @@ operationButtons.forEach( item => {
             equation.operation.push( e.target.dataset.key );
         }
         displayValue.textContent = 0;
-        //console.log(equation.number);
         console.log(equation.operation);
+        console.log(equation);
     });
 });
 
 equalsButton.addEventListener('click', executeOperation);
+
+clearButton.addEventListener('click', e => {
+    equation.number = [];
+    equation.operation = [];
+    displayValue.textContent = '0';
+});
+
+deleteButton.addEventListener('click', e => {
+    console.log(displayValue.textContent);
+    if(displayValue.textContent > 2) {displayValue.textContent = displayValue.textContent.slice(0, -1)
+        console.log(displayValue.textContent);
+    } else {
+        displayValue.textContent = '0';
+    }
+});
 

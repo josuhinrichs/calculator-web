@@ -8,6 +8,9 @@
 body {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .calculator {
@@ -82,4 +85,34 @@ body {
 
 .equals {
     width: 132px;
+}
+
+.special {
+    background-color: #6096BA;
+}
+
+.special:hover {
+    background-color: #4d7794;
+}
+
+.footer {
+    margin-top: 64px;
+    display: flex;
+    font-size: 24px;
+    color: #524656;
+    justify-self: flex-end;
+    justify-content: center;
+    gap: 12px;
+    align-items: center;
+}
+
+#github-icon {
+    width: 30px;
+    align-self: center;
+}
+
+.subtitle {
+    font-size: 64px;
+    margin: 48px;
+    color: #343438;
 }

@@ -9,13 +9,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="subtitle">
+        calculator
+    </div>
     <div class="calculator">
         <div class="screen">
             <div class="screen-result">0</div>
         </div>
         <div class="keypad">
-            <button class="calculator-key operator clear">AC</button>
-            <button class="calculator-key operator delete">C</button>
+            <button class="calculator-key special" id="clear">AC</button>
+            <button class="calculator-key special" id="delete">C</button>
             <button class="calculator-key operator" data-key="%">%</button>
             <button class="calculator-key operator" data-key="/">/</button>
 
@@ -42,6 +45,10 @@
             
             <button class="calculator-key operator equals" data-key="=">=</button>
         </div>
+    </div>
+    <div class="footer">
+        developed by josué hinrichs
+        <a target="_blank" href="https://github.com/josuhinrichs"><img id="github-icon" src="./images/github-mark.png"></a>
     </div>
 </body>
 </html>
